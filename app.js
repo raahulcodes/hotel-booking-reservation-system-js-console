@@ -28,6 +28,12 @@ bookings.forEach(book=>
     console.log("Minutes: " + book.check_in_date.getMinutes());
     console.log("Seconds: " + book.check_in_date.getSeconds());
 
+    // calculating the number of nights to stay
+    console.log("Total Nights to Stay: " + (book.check_out_date.getDate()-book.check_in_date.getDate()));
+    
+    // calculating the total room cost for given number of nights
+    console.log("Total Room Cost: " + book.room_price*(book.check_out_date.getDate()-book.check_in_date.getDate()));
+
 }
 )
 
@@ -44,6 +50,20 @@ bookings.forEach(book=>
     console.log("Hours: " + book.check_out_date.getHours());
     console.log("Minutes: " + book.check_out_date.getMinutes());
     console.log("Seconds: " + book.check_out_date.getSeconds());
+
+    // displaying the checkout details after updation
+    if(book.check_out_date.getDate()===30)
+    {
+        
+        console.log("Original Check-Out Date: " + book.check_out_date);
+        updated_check_out_date = new Date(2026,10,3);
+        let date_difference = (updated_check_out_date-book.check_in_date);
+        let hours = 1000*60*60*24;
+        console.log("Updated Checkout Date: " + updated_check_out_date);
+        console.log("Original number of night stays: " + (book.check_out_date.getDate()-book.check_in_date.getDate()));
+        console.log("Updated number of night stays: " + Math.floor(date_difference/hours));
+        console.log("Additional Cost: " + updated_check_out_date.getDate()*(book.room_price));
+    }
 
 }
 )
